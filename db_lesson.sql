@@ -53,19 +53,22 @@ INSERT INTO
   (25,'日報を提出します。今日は9月10日です。');
 
 -- Q4
-UPDATE people 
+UPDATE 
+  people 
  SET 
   department_id = 1 
  WHERE 
   person_id = 1;
 
-UPDATE people 
+UPDATE
+  people 
  SET 
   department_id = 1 
  WHERE 
   person_id = 3;
 
-UPDATE people 
+UPDATE
+  people 
  SET 
   department_id = 1 
  WHERE 
