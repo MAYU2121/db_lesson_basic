@@ -10,15 +10,13 @@ CREATE TABLE departments(
 );
 
 -- Q2
-ALTER TABLE people
- ADD department_id INT UNSIGNED NULL;
-
-ALTER TABLE departments
- MODIFY department_id INT UNSIGNED NULL AFTER email;
--- 一番下にカラムが追加されたので、課題に載っていた参考の画像の通りの順番に直しました。
-
+ALTER TABLE
+  people
+ ADD 
+  department_id INT UNSIGNED NULL AFTER email;
 -- Q3
-INSERT INTO departments (name)
+INSERT INTO 
+  departments (name)
  VALUES
   ('営業'),
   ('開発'),
@@ -26,7 +24,8 @@ INSERT INTO departments (name)
   ('人事'),
   ('情報システム');
 
-INSERT INTO people (name, email, department_id, age, gender)
+INSERT INTO 
+  people (name, email, department_id, age, gender)
  VALUES
   ('相内すみ', 'AA@gmail.com', 1, 30, 1),
   ('小野寺きょうへい', 'BB@gmail.com', 1, 31, 2),
@@ -39,7 +38,8 @@ INSERT INTO people (name, email, department_id, age, gender)
   ('佐藤たけし', 'II@gmail.com', 4, 33, 2),
   ('竹内しゅうと', 'JJ@gmail.com', 5, 29, 2);
 
-INSERT INTO reports (person_id, content)
+INSERT INTO
+  reports (person_id, content)
  VALUES
   (16,'日報を提出します。今日は9月1日です。'),
   (17,'日報を提出します。今日は9月2日です。'),
@@ -79,7 +79,8 @@ UPDATE
   person_id = 5;
 
 -- Q5
-SELECT name, age 
+SELECT
+  name, age 
  FROM 
   people 
  WHERE 
@@ -88,13 +89,14 @@ SELECT name, age
   age DESC;
 
 -- Q6
-peopleテーブルから、nameとemailとageのカラム（列）を取得します。
-ただし、department_idが１のカラムに限り表示ます。
-作成日が古いものが一番上にくるように並べる（昇順）ため、ORDER BYを用いて並べ替えます。
-デフォルトはASC（昇順）なので省略可能です。
+-- peopleテーブルから、nameとemailとageのカラム（列）を取得します。
+-- ただし、department_idが１のカラムに限り表示ます。
+-- 作成日が古いものが一番上にくるように並べる（昇順）ため、ORDER BYを用いて並べ替えます。
+-- デフォルトはASC（昇順）なので省略可能です。
 
 -- Q7
-SELECT name
+SELECT 
+  name
  FROM 
   people
  WHERE
@@ -103,26 +105,29 @@ SELECT name
   (gender = 2 AND age BETWEEN 40 AND 49);
 
 -- Q8
-SELECT name 
+SELECT 
+  name 
  FROM 
   people 
  WHERE 
   department_id = 1;
 
 -- Q9
-SELECT AVG(age) 
+SELECT
+  AVG(age) 
  AS 
   average_age 
  FROM 
- people 
+  people 
  WHERE 
   department_id = 2 
- GROUP BY 
+ AND
   gender = 2;
 
 
 -- Q10
-SELECT p.name, d.name, r.content 
+SELECT
+  p.name, d.name, r.content 
  FROM 
   people AS p 
  INNER JOIN 
@@ -133,7 +138,8 @@ SELECT p.name, d.name, r.content
   ON p.person_id = r.person_id;
 
 -- Q11
-SELECT p.name 
+SELECT
+  p.name 
  FROM 
   people AS p
  LEFT JOIN 
